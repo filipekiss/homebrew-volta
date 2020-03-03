@@ -10,9 +10,13 @@ class Volta < Formula
     bin.install "volta", "volta-migrate", "volta-shim"
   end
 
+  def caveats; <<~EOS
+    You need to run `volta setup` or add `~/.volta/bin` to your $PATH
+  EOS
+  end
+
   test do
     output = shell_output("#{bin}/volta --version")
     assert_match "0.7.2", output
   end
 end
-
